@@ -1,11 +1,15 @@
-import type { NextPage } from 'next'
+import type {GetServerSideProps, NextPage } from 'next'
+import { Provider } from "next-auth/providers";
 import Head from 'next/head'
 import Image from 'next/image'
-import { signIn, signOut, useSession } from 'next-auth/react'
+import { getProviders, signIn, signOut, useSession } from 'next-auth/react'
 
 
+type Props = {
+  providers: Provider
+}
 
-const Home = () => {
+const Home = ({providers}:Props) => {
 
   const { data: session } = useSession();
   
@@ -19,15 +23,26 @@ const Home = () => {
       </Head>
 
       <main>
-        {session ?(
+        {session?.user?(
           <>
           <h1>Welcome back {session.user.name}</h1>
           <button onClick= {() =>signOut()}>Log out</button>
           </>
         ):(
           <>
-          <h1>You are not signed in</h1>
-          <button onClick= {() =>signIn()}>Sign in</button>
+            {providers && Object.values(providers).map((provider) => (
+              <div key={provider.name}>
+                <button
+                  onClick={() =>
+                    signIn(provider.id, {
+                      callbackUrl: "/",
+                    })
+                  }
+                >
+                  Sign in with {provider.name}
+                </button>
+              </div>
+            ))}
           </>
         )}
       </main>
@@ -36,3 +51,10 @@ const Home = () => {
 }
 
 export default Home
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const providers = await getProviders();
+  return {
+    props: { providers },
+  };
+};
