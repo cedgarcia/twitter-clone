@@ -1,5 +1,6 @@
-import { connectToDatabase } from "../mongodb";
-import { User, Account } from "next-auth";
+import dbConnect from "../dbConnect";
+import User from "../../models/User";
+// import { User, Account } from "next-auth";
 
 export type ReqUser = {
   id: string;
@@ -19,17 +20,29 @@ export type ResUser = ReqUser & {
 };
 
 export const getUser = async (id: string) => {
-  const { db } = await connectToDatabase();
-  const user = await db.collection("users").findOne({ id });
+  await dbConnect();
+  const user = await User.findOne({ id }).exec();
   console.log(user, "USER");
   return user;
 };
 
 export const createUser = async (user: ReqUser) => {
-  const { db } = await connectToDatabase();
-  const response = db.collection("users").insertOne({
+  await dbConnect();
+  var newUser = new User({
     ...user,
     completed: false,
     createdAt: new Date(),
-  });
+  });  console.log("CREATE USER")
+
+  // const response = db.collection("users").insertOne({
+  //   ...user,
+  //   completed: false,
+  //   createdAt: new Date(),
+  // });
+   // Create new user
+ var usercreated = await newUser.save();
+ console.log(usercreated, "usercreated");
+
+ return usercreated;
+
 };
