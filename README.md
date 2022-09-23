@@ -1,34 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Todo
 
-## Getting Started
+User story: I can see my profile or others' profile
 
-First, run the development server:
+User story: When I am on a profile, I can see Tweets and Retweets. I can also filter by Tweets, Tweets and replies, Media and Likes
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+User story: When I am on a profile, I can see followers and following
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+User story: When I am on a profile, I can see follow or unfollow the user
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+User story: I can navigate between Home, Explore and Bookmarks
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+User story: I can navigate to My Profile, Group Chat (optional), Setting/Authentication App.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+User story: When I am on Home, I can post a new Tweet
 
-## Learn More
+User story: When I post a new Tweet, I can choose to upload an image and set the Tweet to be public or only-follower
 
-To learn more about Next.js, take a look at the following resources:
+User story: When I am on Home, I can see Tweets of people who I follow
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+User story: I can Comment, Retweet, Like or Save a Tweet
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+User story: I can Comment with image and I can like a comment
 
-## Deploy on Vercel
+User story: I can see the posted time of the Comments and Tweets
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+User story: When I am on Home, I can see the most popular hashtags and people I should follow (it's up to you how to implement this)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+User story: When I am on Explore, I can see the Top, Latest Tweet, or Tweet with Media. I can also choose to see the most popular people
+
+User story: When I am on Bookmarks, I can see the Saved Tweet
+
+User story(optional): I can search for a group
